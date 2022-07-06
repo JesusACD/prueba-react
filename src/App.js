@@ -8,7 +8,15 @@ function App() {
 	const handleTraductor = async (e) => {
 		const result = await translate(`I'm fine.`, {
 			tld: 'cn',
-			to: 'vi'
+			to: 'vi',
+			proxy: {
+				host: '127.0.0.1',
+				port: 9000,
+				auth: {
+					username: 'mikeymike',
+					password: 'rapunz3l'
+				}
+			}
 		});
 		console.log('result', result);
 		setTexto(result);
@@ -32,7 +40,7 @@ function App() {
 				<a href='!#' onClick={() => handleTraductor()}>
 					TRADUCIR
 				</a>
-				<div>{textoTraducido || `No hay`}</div>
+				<div>{textoTraducido || `No hay nada`}</div>
 			</header>
 		</div>
 	);
